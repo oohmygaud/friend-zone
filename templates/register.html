@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<div class="container p-5">
+  <form action="/register" method="post">
+    <div class="form-group">
+      <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+    </div>
+    <div class="form-group">
+      <input
+        autocomplete="off"
+        autofocus
+        class="form-control"
+        name="email"
+        placeholder="Email"
+        type="email"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        autocomplete="off"
+        autofocus
+        class="form-control"
+        name="phone"
+        placeholder="Phone Number" 
+        type="text"
+      />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="password" placeholder="Password" type="password">
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Timezones</label>
+      </div>
+
+      <select class="custom-select" id="inputGroupSelect01" name="timezone">
+        <option value="" selected>Choose...</option>
+        {% for time in timezones %}
+        <option value={{ time }}>{{ time }}</option>
+        {% endfor %}
+      </select>
+    </div>
+</div>
+<button class="btn btn-primary" type="submit">Register</button>
+</form>
+<br />
+<br />
+<b style="color: red">{{apology}}</b>
+</div>
+{% endblock %}

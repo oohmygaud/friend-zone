@@ -1,0 +1,10 @@
+cs50
+Flask
+Flask-Session
+requests
+db-sqlite3
+Pillow
+pytz
+arrow
+twilio
+Flask-Mail

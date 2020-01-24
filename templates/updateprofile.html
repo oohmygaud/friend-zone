@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+<div class="container p-5">
+  <form action="/profile/edit" method="post">
+    <div class="form-group">
+      <label for="inputUsername">Username</label>
+      <input autocomplete="off" autofocus class="form-control" name="username" type="text" id="inputUsername"
+        value="{{ user[0] }}" />
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <input autocomplete="off" autofocus class="form-control" name="email" type="email" id="inputEmail"
+        value="{{ user[1] }}" />
+    </div>
+    <div class="form-group">
+      <label for="inputPhone">Phone</label>
+      <input autocomplete="off" autofocus class="form-control" name="phone" type="text" id="inputPhone"
+        value="{{ user[2] }}" />
+    </div>
+</div>
+<div class="form-group">
+  <label for="inputTimezone">Timezone</label>
+  <select class="form-control" id="inputTimezone" name="timezone">
+    {% for time in timezones %}
+    <option value="{{ time }}" {% if time == user[3] %}selected{% endif %}>{{ time }}</option>
+    {% endfor %}
+  </select>
+</div>
+<br />
+<center>
+  <button class="btn btn-primary" type="submit">Update Profile</button>
+  </form>
+
+  <br />
+  <b style="color: red">{{apology}}</b>
+</center>
+
+</div>
+{% endblock %}

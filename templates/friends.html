@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+<div style="padding: 2em;">
+    <form action="/addfriend" method="get">
+        <button class="btn btn-primary" type="submit">Add Friend</button>
+    </form>
+    <br />
+    
+    <table class="table table-hover" style="padding: 2em;">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row['name'] }}</td>
+                <td>{{ row['email'] }}</td>
+                <td>{{ row['birthday'] }}</td>
+                <td>{{ row['phone'] }}</td>
+                <td><a class="btn" href="/update/{{ row['id'] }}" >EDIT</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

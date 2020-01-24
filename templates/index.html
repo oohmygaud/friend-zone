@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+<div class="map_container" style="position: relative">
+  <img src="/static/timezonemap.png" alt="Timezone Map" style="width: 100%; opacity:60%;">
+  {% for row in friends %}
+  <div class="absolute_container" style="top: {{ row['lat_pct'] }}%; left: {{ row['lon_pct'] }}%;">
+    <div class="image_container" style="border-radius: 1.5em; width: 3em; height: 3em; overflow: hidden;">
+      <img src={{ row['img'] }} alt="audrey" style="max-height: 4em">
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<br />
+<div class="container p-3">
+  <h4>Current Time: {{ local_time }} </h4>
+  <br />
+  <div class='row'>
+    {% for zone in friendzones %}
+    <div class='col-sm-4'>
+      <div class='card' style="margin:auto; padding: 1.5em;">
+        <h5 class='card-title'>{{ zone['current_time'] }}</h5>
+        <h6 class='card-subtitle mb-2 text-muted'>{{ zone['timezone'] }}</h6>
+        {% for f in zone['friends'] %}
+        {{ f }} <br />
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}

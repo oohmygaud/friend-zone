@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+<div style="padding: 2em;">
+    <form action="/addreminder" method="get">
+        <button class="btn btn-primary" type="submit">Add Reminder</button>
+    </form>
+    <br />
+
+    <table class="table table-hover" style="padding: 2em;">
+        <thead>
+            <tr>
+                <th scope="col">Friend</th>
+                <th scope="col">Date</th>
+                <th scope="col">Contact Method</th>
+                <th scope="col">Sent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reminders %}
+            <tr>
+                <td>{{ r['name'] }}</td>
+                <td>{{ r['reminder_time_local'].format('ddd MMM DD @ HH:mm') }}</td>
+                <td>{{ r['contact_method'] }}</td>
+                {% if r['sent'] == 1 %}
+                <td>
+                    <i class="material-icons" style="color: chartreuse;">
+                        check_circle
+                    </i>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

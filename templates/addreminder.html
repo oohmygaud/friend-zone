@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+<div class="container p-5">
+  <form action="/addreminder" method="post">
+    <div class="form-group">
+      <label for="inputName">Friend</label>
+      <select class="form-control" id="inputName" name="id">
+        <option selected>Choose...</option>
+        {% for row in data %}
+        <option value={{ row['id'] }}>{{ row['name'] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="selectContact">Contact Method</label>
+      <select class="form-control" id="selectContact" name="contact_method">
+        <option selected>Phone</option>
+        <option>Email</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputTime">Time</label>
+      <input autocomplete="off" autofocus class="form-control" name="time" type="datetime-local" id="inputTime" />
+    </div>
+
+
+
+    <button class="btn btn-primary" type="submit">Add Reminder</button>
+    <br />
+    <b style="color: red">{{apology}}</b>
+  </form>
+</div>
+{% endblock %}

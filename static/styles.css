@@ -1,0 +1,31 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: x-large;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+.map_container {
+    width: 100vw;
+}
+
+.absolute_container {
+    position: absolute;
+}
